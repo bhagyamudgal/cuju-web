@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    @apply font-body;
+}
+
+@layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    button {
+        @apply font-heading;
+    }
+}
+
+@layer utilities {
+    .bg-gradient-1 {
+        @apply bg-gradient-to-b from-blue-400 via-blue-300
+        to-blue-400;
+    }
+
+    .btn-sm {
+        @apply py-2 text-sm;
+    }
+
+    .btn-md {
+        @apply py-2;
+    }
+
+    .btn-lg {
+        @apply py-3;
+    }
+}

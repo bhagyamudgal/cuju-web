@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "sznm/react",
+        "plugin:react/jsx-runtime",
+        "plugin:@next/next/recommended"
+    ],
+    "rules": {
+        // other rules
+        "@typescript-eslint/naming-convention": "off",
+        "prettier/prettier": "error"
+    },
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    }
+}
