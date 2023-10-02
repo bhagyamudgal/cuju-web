@@ -25,10 +25,12 @@
     .bg-gradient-1 {
         background: linear-gradient(
             180deg,
-            #50a7d8 0%,
-            #8fd2f8 50.3%,
-            #439fd2 100%
+            #105c86 0%,
+            #3f91bf 50.3%,
+            #0a4e75 100%
         );
+
+        @apply text-white;
     }
 
     .btn-sm {

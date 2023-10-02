@@ -5,7 +5,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: "#5CBCF2",
+                primary: "#19618A",
             },
             fontFamily: {
                 heading: "var(--font-suez-one)",

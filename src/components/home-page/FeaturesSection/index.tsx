@@ -29,7 +29,10 @@ function FeaturesSection() {
             <PageContainer className="flex flex-wrap justify-center">
                 {FEATURES.map((feature) => {
                     return (
-                        <div className="bg-gradient-1 m-4 flex w-full max-w-[400px] items-center space-x-4 rounded-[48px] p-8">
+                        <div
+                            key={feature.name}
+                            className="bg-gradient-1 m-4 flex w-full max-w-[400px] items-center space-x-4 rounded-[48px] p-8"
+                        >
                             <Image src={feature.image} alt={feature.name} />
                             <div className="space-y-3">
                                 <h4 className="text-xl">{feature.name}</h4>

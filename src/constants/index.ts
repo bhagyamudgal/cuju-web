@@ -1,4 +1,4 @@
-export const PRIMARY_COLOR = "#5CBCF2";
+export const PRIMARY_COLOR = "#19618A";
 
 export enum UserRoles {
     "User" = "User",
