@@ -23,8 +23,12 @@
 
 @layer utilities {
     .bg-gradient-1 {
-        @apply bg-gradient-to-b from-blue-400 via-blue-300
-        to-blue-400;
+        background: linear-gradient(
+            180deg,
+            #50a7d8 0%,
+            #8fd2f8 50.3%,
+            #439fd2 100%
+        );
     }
 
     .btn-sm {
