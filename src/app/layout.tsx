@@ -1,6 +1,8 @@
 import "@/src/app/globals.css";
 import { Suez_One, Source_Code_Pro } from "next/font/google";
 
+import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
 import Providers from "../components/common/Providers";
 import ToastNotification from "../components/common/ToastNotification";
 
@@ -32,13 +34,19 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/favicon.ico" />
             </head>
-            <body
-                className={`${suezOne.variable} ${sourceCodePro.variable} flex h-screen flex-col bg-gray-200 text-black`}
-            >
-                <Providers>{children}</Providers>
+            <Providers>
+                <body
+                    className={`${suezOne.variable} ${sourceCodePro.variable} flex h-screen flex-col bg-[#E3E3E3] text-black`}
+                >
+                    <Header />
 
-                <ToastNotification />
-            </body>
+                    <div className="flex-grow">{children}</div>
+
+                    <Footer />
+
+                    <ToastNotification />
+                </body>
+            </Providers>
         </html>
     );
 }
