@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { ulid } from "ulid";
 
 import {
     showErrorToast,
@@ -72,4 +73,8 @@ export const capitalizeFirstLetter = (str: string): string => {
         logError("capitalizeFirstLetter =>", error);
         return str;
     }
+};
+
+export const generateId = () => {
+    return ulid().toLowerCase();
 };
