@@ -5,6 +5,7 @@ import Footer from "../components/common/Footer";
 import Header from "../components/common/Header";
 import Providers from "../components/common/Providers";
 import ToastNotification from "../components/common/ToastNotification";
+// import HeroImage from "../components/home-page/HeroImage";
 
 const suezOne = Suez_One({
     variable: "--font-suez-one",
@@ -36,8 +37,10 @@ export default function RootLayout({
             </head>
             <Providers>
                 <body
-                    className={`${suezOne.variable} ${sourceCodePro.variable} flex h-screen flex-col bg-[#E3E3E3] text-black`}
+                    className={`${suezOne.variable} ${sourceCodePro.variable} relative flex h-screen flex-col overflow-x-hidden bg-[#E3E3E3] text-black`}
                 >
+                    {/* <HeroImage /> */}
+
                     <Header />
 
                     <div className="flex-grow">{children}</div>
