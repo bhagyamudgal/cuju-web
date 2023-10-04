@@ -1,4 +1,5 @@
-import Button from "../Button";
+import UserProfile from "../../auth/UserProfile";
+import DonateButton from "../DonateButton";
 import PageContainer from "../PageContainer";
 
 function Header() {
@@ -6,7 +7,11 @@ function Header() {
         <header>
             <PageContainer className="flex justify-between">
                 <h1 className="text-2xl">Cuju</h1>
-                <Button>DONATE NOW</Button>
+
+                <div className="flex space-x-3">
+                    <DonateButton />
+                    <UserProfile />
+                </div>
             </PageContainer>
         </header>
     );

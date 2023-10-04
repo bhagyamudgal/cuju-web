@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import DonateButton from "../../common/DonateButton";
 import PageContainer from "../../common/PageContainer";
 import heroSectionImage1 from "@/public/images/hero-section-1.png";
 
@@ -21,12 +22,7 @@ function HeroSection() {
                         a special token of gratitude!
                     </p>
 
-                    <button
-                        type="button"
-                        className="bg-gradient-1 mx-auto flex max-w-[400px] flex-col items-center space-y-4 rounded-[32px] p-8 text-4xl drop-shadow-2xl"
-                    >
-                        Donate Now
-                    </button>
+                    <DonateButton className="bg-gradient-1 mx-auto flex max-w-[400px] flex-col items-center space-y-4 rounded-[32px] p-8 text-4xl drop-shadow-2xl" />
                 </div>
                 <div className="max-w-[450px] space-y-1">
                     <h2 className="font-body text-3xl italic text-primary">

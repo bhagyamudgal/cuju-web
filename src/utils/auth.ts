@@ -1,12 +1,15 @@
 import type { SIWS } from "@web3auth/sign-in-with-solana";
 // import { eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { getCsrfToken } from "next-auth/react";
 
+import db from "../db";
+import { usersTable } from "../db/schema/users";
 import env from "../env/index.mjs";
 
-import { log, logError } from "./general";
+import { generateId, logError } from "./general";
 import { verifySignature } from "./web3auth";
 
 const authPage = "/dashboard";
@@ -90,34 +93,40 @@ const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ session, token }) {
             const walletAddress = token.sub;
-            log("session =>", { session, token, walletAddress });
 
-            // const [userData] = await db
-            //     .select()
-            //     .from(usersTable)
-            //     .where(eq(usersTable.walletAddress, walletAddress))
-            //     .limit(1);
+            const [userData] = await db
+                .select()
+                .from(usersTable)
+                .where(eq(usersTable.walletAddress, walletAddress))
+                .limit(1);
 
-            // if (!userData) {
-            //     const [createdUser] = await db
-            //         .insert(usersTable)
-            //         .values({ walletAddress })
-            //         .returning();
+            if (!userData) {
+                const userId = generateId();
 
-            //     if (createdUser) {
-            //         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //         // @ts-ignore
-            //         // eslint-disable-next-line no-param-reassign
-            //         session.user = createdUser;
-            //     } else {
-            //         throw new Error("Failed to create user!");
-            //     }
-            // } else {
-            //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            //     // @ts-ignore
-            //     // eslint-disable-next-line no-param-reassign
-            //     session.user = userData;
-            // }
+                const { insertId } = await db
+                    .insert(usersTable)
+                    .values({ id: userId, walletAddress });
+
+                if (insertId) {
+                    const [user] = await db
+                        .select()
+                        .from(usersTable)
+                        .where(eq(usersTable.id, userId))
+                        .limit(1);
+
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    // eslint-disable-next-line no-param-reassign
+                    session.user = user;
+                } else {
+                    throw new Error("Failed to create user!");
+                }
+            } else {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                // eslint-disable-next-line no-param-reassign
+                session.user = userData;
+            }
 
             return session;
         },

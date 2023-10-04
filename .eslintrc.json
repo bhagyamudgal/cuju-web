@@ -8,7 +8,23 @@
         // other rules
         "@typescript-eslint/naming-convention": "off",
         "import/prefer-default-export": "off",
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ],
+        "jsx-a11y/label-has-for": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ]
     },
     "parserOptions": {
         "project": "./tsconfig.json"
