@@ -1,5 +1,6 @@
 "use client";
 
+import { useWallet } from "@solana/wallet-adapter-react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import type { HTMLProps } from "react";
@@ -15,11 +16,13 @@ function DonateButton({ className }: Props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    const { publicKey } = useWallet();
+
     const { status } = useSession();
 
     const donateButtonHandler = () => {
         try {
-            if (status === "unauthenticated") {
+            if (status === "unauthenticated" || !publicKey) {
                 router.push("/auth?redirect=/");
             } else {
                 onOpen();

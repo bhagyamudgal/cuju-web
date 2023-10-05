@@ -172,6 +172,8 @@ export async function POST(req: NextRequest) {
             req,
         });
 
+        let nftMintAddress: string | null = null;
+
         try {
             if (user.nftId) {
                 logApi(
@@ -211,6 +213,8 @@ export async function POST(req: NextRequest) {
                         },
                     }
                 );
+
+                nftMintAddress = updateNftResponse.mintAddress;
 
                 await db
                     .update(usersTable)
@@ -269,6 +273,8 @@ export async function POST(req: NextRequest) {
                     }
                 );
 
+                nftMintAddress = createNftResponse.mintAddress;
+
                 await db
                     .update(usersTable)
                     .set({
@@ -301,7 +307,7 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(
             successHandler(
-                donationPaymentData,
+                { ...donationPaymentData, nftMintAddress },
                 "Donation payment transaction saved successfully!"
             ),
             { status: 201 }

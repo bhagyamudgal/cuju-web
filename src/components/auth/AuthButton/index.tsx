@@ -6,7 +6,7 @@ import base58 from "bs58";
 import { ArrowLeftRight } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getCsrfToken, signIn, useSession } from "next-auth/react";
+import { getCsrfToken, signIn, signOut, useSession } from "next-auth/react";
 import type { HTMLProps } from "react";
 import { useEffect } from "react";
 import { ClipLoader } from "react-spinners";
@@ -55,6 +55,19 @@ function AuthButton({ className }: Props) {
             }
         }
     }, [status]); //eslint-disable-line
+
+    const signOutHandler = async () => {
+        await signOut({
+            redirect: false,
+        });
+        router.refresh();
+    };
+
+    useEffect(() => {
+        if (!wallet.publicKey) {
+            signOutHandler();
+        }
+    }, [wallet.publicKey]); // eslint-disable-line
 
     useEffect(() => {
         if (wallet?.wallet?.adapter) {

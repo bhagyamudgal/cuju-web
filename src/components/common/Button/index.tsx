@@ -11,11 +11,13 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     isLoading?: boolean;
     loadingText?: string;
     isDisabled?: boolean;
+    target?: "_blank";
 };
 
 function Button({
     type = "button",
     link,
+    target,
     className,
     size = "md",
     onClick,
@@ -32,13 +34,34 @@ function Button({
         buttonSize = "btn-sm";
     }
 
+    const disabledClasses = isDisabled
+        ? "disabled:bg-gray-400"
+        : "bg-gradient-1";
+
     if (link) {
+        if (target === "_blank") {
+            return (
+                <Link
+                    href={link}
+                    className={cn(
+                        "flex cursor-pointer items-center justify-center space-x-2 rounded-full px-6 font-heading font-medium drop-shadow-lg hover:bg-primary disabled:cursor-not-allowed disabled:bg-gray-400",
+                        disabledClasses,
+                        buttonSize,
+                        className
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {children}
+                </Link>
+            );
+        }
         return (
             <Link
                 href={link}
                 className={cn(
                     "flex cursor-pointer items-center justify-center space-x-2 rounded-full px-6 font-heading font-medium drop-shadow-lg hover:bg-primary disabled:cursor-not-allowed disabled:bg-gray-400",
-                    isDisabled ? "disabled:bg-gray-400" : "bg-gradient-1",
+                    disabledClasses,
                     buttonSize,
                     className
                 )}
@@ -54,7 +77,7 @@ function Button({
             type={type}
             className={cn(
                 "flex cursor-pointer items-center justify-center space-x-2 rounded-full px-6 font-medium drop-shadow-lg hover:bg-primary disabled:cursor-not-allowed disabled:bg-gray-400",
-                isDisabled ? "disabled:bg-gray-400" : "bg-gradient-1",
+                disabledClasses,
                 buttonSize,
                 className
             )}
@@ -63,7 +86,7 @@ function Button({
         >
             {isLoading ? (
                 <span className="flex items-center space-x-2">
-                    <ClipLoader color="black" size={15} />
+                    <ClipLoader color="white" size={15} />
                     <span className="font-heading">{loadingText}</span>
                 </span>
             ) : (

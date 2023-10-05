@@ -7,7 +7,8 @@ export type SolanaNetwork = "mainnet-beta" | "devnet";
 export type ApiResponseType = {
     success: boolean;
     message: string;
-    result: object | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    result: any;
 };
 
 export type Register = UseFormRegister<Record<string, unknown>>;

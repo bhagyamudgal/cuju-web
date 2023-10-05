@@ -1,5 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 import Button from "../Button";
 import useDonation from "@/src/hooks/useDonation";
@@ -16,6 +18,12 @@ const DonationDialog = ({ isOpen, onClose }: Props) => {
         isLoading,
         setDonationAmount,
     } = useDonation();
+
+    const pathname = usePathname();
+
+    useEffect(() => {
+        onClose();
+    }, [pathname]); //eslint-disable-line
 
     return (
         <Dialog.Root open={isOpen} onOpenChange={onClose}>

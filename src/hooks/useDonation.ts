@@ -25,6 +25,7 @@ function useDonation() {
     const router = useRouter();
 
     const { publicKey, sendTransaction } = useWallet();
+
     const [donationAmount, setDonationAmount] = useState<number>();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -94,6 +95,10 @@ function useDonation() {
             if (!response.success) {
                 throw new Error("Failed to submit donation transaction!");
             }
+
+            router.push(
+                `/donation-success?amount=${donationAmount}&nftMintAddress=${response.result?.nftMintAddress}`
+            );
 
             showSuccessToast({
                 id: toastId,

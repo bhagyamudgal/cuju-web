@@ -5,12 +5,12 @@ import HeroSection from "../components/home-page/HeroSection";
 
 function Home() {
     return (
-        <>
+        <main>
             <HeroSection />
             <FeaturesSection />
             <GoalsSection />
             <CommunityCard />
-        </>
+        </main>
     );
 }
 
