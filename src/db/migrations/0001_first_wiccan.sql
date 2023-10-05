@@ -1,0 +1,1 @@
+ALTER TABLE `donations` ADD `txSignature` varchar(90) NOT NULL;

@@ -8,6 +8,48 @@
       "when": 1696267799640,
       "tag": "0000_thin_alex_power",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1696508423499,
+      "tag": "0001_first_wiccan",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1696509186605,
+      "tag": "0002_steady_enchantress",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1696510265883,
+      "tag": "0003_lovely_jackpot",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1696512937432,
+      "tag": "0004_fixed_joseph",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1696513010630,
+      "tag": "0005_wild_obadiah_stane",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1696515989187,
+      "tag": "0006_perpetual_blazing_skull",
+      "breakpoints": true
     }
   ]
 }

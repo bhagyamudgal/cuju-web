@@ -1,0 +1,1 @@
+ALTER TABLE `organizations` ADD `image` varchar(200) NOT NULL;

@@ -1,0 +1,1 @@
+ALTER TABLE `donations` ADD CONSTRAINT `donations_txSignature_unique` UNIQUE(`txSignature`);

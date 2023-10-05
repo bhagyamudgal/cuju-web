@@ -22,6 +22,9 @@ const env = createEnv({
         UPSTASH_REDIS_REST_URL: z.string().url(),
         UPSTASH_REDIS_REST_TOKEN: z.string().nonempty(),
 
+        // Underdog
+        UNDERDOG_API_KEY: z.string().nonempty(),
+
         // Axiom
         AXIOM_TOKEN: z.string().nonempty(),
         AXIOM_DATASET: z.union([
@@ -72,6 +75,9 @@ const env = createEnv({
         // Redis
         UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
         UPSTASH_REDIS_REST_TOKEN: process.env.UPSTASH_REDIS_REST_TOKEN,
+
+        // Underdog
+        UNDERDOG_API_KEY: process.env.UNDERDOG_API_KEY,
 
         // Axiom
         AXIOM_TOKEN: process.env.AXIOM_TOKEN,

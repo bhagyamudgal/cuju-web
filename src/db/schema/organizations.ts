@@ -1,10 +1,4 @@
-import {
-    mysqlTable,
-    timestamp,
-    varchar,
-    char,
-    int,
-} from "drizzle-orm/mysql-core";
+import { mysqlTable, timestamp, varchar, char } from "drizzle-orm/mysql-core";
 
 export const organizationsTable = mysqlTable("organizations", {
     id: varchar("id", { length: 26 }).primaryKey(),
@@ -12,6 +6,5 @@ export const organizationsTable = mysqlTable("organizations", {
     updatedAt: timestamp("updatedAt").onUpdateNow(),
     name: varchar("name", { length: 50 }),
     walletAddress: char("walletAddress", { length: 44 }).notNull().unique(),
-    nftProjectId: int("nftProjectId"),
-    nftProjectMintAddress: char("nftProjectMintAddress", { length: 44 }),
+    image: varchar("image", { length: 200 }).notNull(),
 });

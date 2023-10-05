@@ -12,6 +12,7 @@ import {
     showLoadingToast,
     showSuccessToast,
 } from "../components/common/ToastNotification";
+import { DONATION_ADDRESS } from "../constants";
 import { submitDonationTransaction } from "../utils/api/donation";
 import { logError } from "../utils/general";
 import {
@@ -19,8 +20,6 @@ import {
     createSystemInstruction,
     getSolanaConnection,
 } from "../utils/solana";
-
-const DONATION_ADDRESS = "HYn8ToSUQShxWXFvTGihnFjH4cGsJ7ty4xkoAWvSWrwU";
 
 function useDonation() {
     const router = useRouter();

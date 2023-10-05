@@ -18,5 +18,6 @@ export const donationsTable = mysqlTable("donations", {
     }).notNull(),
     amount: float("amount").notNull(),
     currency: varchar("currency", { length: 10 }).default("SOL"),
+    txSignature: varchar("txSignature", { length: 90 }).notNull().unique(),
     organizationId: varchar("organizationId", { length: 26 }).notNull(),
 });

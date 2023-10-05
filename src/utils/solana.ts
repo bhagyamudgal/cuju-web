@@ -44,8 +44,7 @@ export const shortenWalletAddress = (address: string) => {
 
 export const validateSolAddress = (address: string) => {
     try {
-        const pubkey = new PublicKey(address);
-        return PublicKey.isOnCurve(pubkey.toBuffer());
+        return new PublicKey(address);
     } catch (error) {
         return false;
     }

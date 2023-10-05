@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { Logger } from "next-axiom";
 import { LogLevel } from "next-axiom/dist/logger";
 
+import type { SelectUser } from "../db/types";
 import { log, logError } from "../utils/general";
 
 const logger = new Logger({
@@ -25,7 +26,7 @@ export const logApi = (
         error?: string | null | unknown;
         body?: object;
         message: string;
-        user?: object;
+        user?: SelectUser | null;
         req?: NextRequest;
         statusCode?: 200 | 201 | 400 | 401 | 500 | null;
     },
@@ -51,7 +52,11 @@ export const logApi = (
 
     const logData = {
         logId,
-        user,
+        user: user
+            ? {
+                  walletAddress: user?.walletAddress,
+              }
+            : null,
         request: reqData,
         error: error instanceof Error ? error.message : error,
         response: {
