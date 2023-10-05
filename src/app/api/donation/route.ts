@@ -219,6 +219,7 @@ export async function POST(req: NextRequest) {
                 await db
                     .update(usersTable)
                     .set({
+                        nftMintAddress,
                         totalAmountDonated: newTotalDonations.toNumber(),
                     })
                     .where(eq(usersTable.id, user.id));
@@ -279,7 +280,7 @@ export async function POST(req: NextRequest) {
                     .update(usersTable)
                     .set({
                         nftId: createNftResponse.nftId,
-                        nftMintAddress: createNftResponse.mintAddress,
+                        nftMintAddress,
                         totalAmountDonated: totalDonations,
                     })
                     .where(eq(usersTable.id, user.id));
