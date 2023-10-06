@@ -274,12 +274,19 @@ export async function POST(req: NextRequest) {
                     }
                 );
 
-                nftMintAddress = createNftResponse.mintAddress;
+                const { nftId } = createNftResponse;
+
+                const getCreatedNftResponse = await getUnderdogCompressedNft(
+                    nftId,
+                    UNDERDOG_NFT_PROJECT_ID
+                );
+
+                nftMintAddress = getCreatedNftResponse.mintAddress;
 
                 await db
                     .update(usersTable)
                     .set({
-                        nftId: createNftResponse.nftId,
+                        nftId,
                         nftMintAddress,
                         totalAmountDonated: totalDonations,
                     })

@@ -31,7 +31,6 @@ export type CreateUnderdogNftResponse = {
     projectId: number;
     transferable: boolean;
     compressed: boolean;
-    mintAddress: string;
 };
 
 export type UnderdogNft = {
