@@ -18,13 +18,11 @@ function Footer() {
                         <Image src={solanaLogo} alt="solana-logo" />
                     </Link>
                     <p>Made possible on the Solana network.</p>
-                    <p>
-                        &copy; 2023 Dean&apos;s List DAO. All rights reserved.
-                    </p>
+                    <p>&copy; Cuju 2023. All rights reserved.</p>
                 </div>
 
                 <Link
-                    href="https://twitter.com/deanslistDAO"
+                    href="https://twitter.com/cujuofficial"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
