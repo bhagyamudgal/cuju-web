@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Button from "../common/Button";
 import PageContainer from "../common/PageContainer";
 import donationSuccessImage from "@/public/images/donation-success.png";
+import env from "@/src/env/index.mjs";
 
 function DonationSuccessSection() {
     const router = useRouter();
@@ -46,7 +47,10 @@ function DonationSuccessSection() {
             <div className="flex items-center space-x-4">
                 <Button
                     target="_blank"
-                    link={`https://xray.helius.xyz/token/${nftMintAddress}?network=devnet`}
+                    link={`https://xray.helius.xyz/token/${nftMintAddress}${
+                        env.NEXT_PUBLIC_SOLANA_NETWORK === "devnet" &&
+                        "?network=devnet"
+                    }`}
                 >
                     VIEW MY NFT
                 </Button>
