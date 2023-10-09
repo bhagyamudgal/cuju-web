@@ -3,24 +3,18 @@
 import Image from "next/image";
 
 import heroSectionImage2 from "@/public/images/hero-section-2.png";
-import heroSectionImage3 from "@/public/images/hero-section-3.svg";
+// import heroSectionImage3 from "@/public/images/hero-section-3.svg";
 
 function HeroImage() {
     return (
-        <div className="absolute right-0 top-0">
-            <div className="relative">
-                <Image
-                    src={heroSectionImage2}
-                    alt="hero-section-image-2"
-                    className="absolute left-10"
-                />
+        <div className="absolute -top-36 right-96 hidden scale-75 xl:block">
+            <Image src={heroSectionImage2} alt="hero-section-image-2" />
 
-                <Image
-                    src={heroSectionImage3}
-                    alt="hero-section-image-3"
-                    className=""
-                />
-            </div>
+            {/* <Image
+                src={heroSectionImage3}
+                alt="hero-section-image-3"
+                className=""
+            /> */}
         </div>
     );
 }

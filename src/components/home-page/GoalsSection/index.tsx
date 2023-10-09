@@ -44,7 +44,7 @@ function GoalsSection() {
                         return (
                             <div
                                 key={goal.id}
-                                className="bg-gradient-1 m-4 w-[40%] rounded-[64px] text-center"
+                                className="bg-gradient-1 m-4 w-full rounded-[64px] text-center md:w-[40%]"
                             >
                                 <Image
                                     className="w-full rounded-t-[64px]"

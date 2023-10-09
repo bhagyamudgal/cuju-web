@@ -36,7 +36,7 @@ function FeaturesSection() {
                             <Image src={feature.image} alt={feature.name} />
                             <div className="space-y-3">
                                 <h4 className="text-xl">{feature.name}</h4>
-                                <p className="text-6xl font-bold">
+                                <p className="text-3xl font-bold sm:text-4xl md:text-6xl">
                                     {feature.value}
                                 </p>
                             </div>

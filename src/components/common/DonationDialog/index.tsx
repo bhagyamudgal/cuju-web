@@ -29,7 +29,7 @@ const DonationDialog = ({ isOpen, onClose }: Props) => {
         <Dialog.Root open={isOpen} onOpenChange={onClose}>
             <Dialog.Portal>
                 <Dialog.Overlay className="fixed inset-0 backdrop-blur-md" />
-                <Dialog.Content className="fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-gray-300 p-5 focus:outline-none">
+                <Dialog.Content className="fixed left-[50%] top-[50%] max-h-[90vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] overflow-y-auto rounded-xl bg-gray-300 p-5 focus:outline-none">
                     <div className="flex items-center justify-between">
                         <Dialog.Title className="text-xl text-primary">
                             Donate
@@ -51,7 +51,7 @@ const DonationDialog = ({ isOpen, onClose }: Props) => {
                     </Dialog.Description>
 
                     <div className="my-4 space-y-2">
-                        <fieldset className="flex items-center justify-between">
+                        <fieldset className="flex flex-wrap items-center justify-between">
                             <label htmlFor="donation-amount">
                                 Amount (In SOL):
                             </label>
@@ -59,7 +59,7 @@ const DonationDialog = ({ isOpen, onClose }: Props) => {
                             <input
                                 type="number"
                                 id="donation-amount"
-                                className="rounded-xl bg-gray-100 px-3 py-1 outline-primary"
+                                className="m-1 rounded-xl bg-gray-100 px-3 py-1 outline-primary"
                                 placeholder="Enter donation amount"
                                 onChange={(e) => {
                                     const value = parseFloat(e.target.value);
