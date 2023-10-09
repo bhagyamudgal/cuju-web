@@ -9,7 +9,7 @@ function Footer() {
     return (
         <footer>
             <PageContainer className="flex items-end justify-between">
-                <div className="space-y-1">
+                <div className="space-y-2">
                     <Link
                         href="https://solana.com"
                         target="_blank"
