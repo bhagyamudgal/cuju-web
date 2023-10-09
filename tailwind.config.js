@@ -13,6 +13,9 @@ module.exports = {
                 suezOne: "var(--font-suez-one)",
                 sourceCodePro: "var(--font-source-code-pro)",
             },
+            screens: {
+                xs: "425px",
+            },
         },
     },
 };

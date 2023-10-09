@@ -8,13 +8,13 @@ import logoImage from "@/public/images/cuju-logo.png";
 
 function Header() {
     return (
-        <header>
+        <header className="py-6">
             <PageContainer className="flex justify-between">
                 <Link href="/">
                     <Image src={logoImage} alt="cuju-logo" width={50} />
                 </Link>
 
-                <div className="flex items-center space-x-3">
+                <div className="xs:flex-row xs:space-y-0 flex flex-col items-center space-x-3 space-y-2">
                     <DonateButton />
                     <UserProfile />
                 </div>
