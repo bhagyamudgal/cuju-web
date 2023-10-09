@@ -8,7 +8,7 @@
         // other rules
         "@typescript-eslint/naming-convention": "off",
         "import/prefer-default-export": "off",
-        "prettier/prettier": "error",
+        "prettier/prettier": "warn",
         "jsx-a11y/label-has-associated-control": [
             "error",
             {
