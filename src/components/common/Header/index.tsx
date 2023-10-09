@@ -14,7 +14,7 @@ function Header() {
                     <Image src={logoImage} alt="cuju-logo" width={50} />
                 </Link>
 
-                <div className="xs:flex-row xs:space-y-0 flex flex-col items-center space-x-3 space-y-2">
+                <div className="flex flex-col items-center space-x-3 space-y-2 xs:flex-row xs:space-y-0">
                     <DonateButton />
                     <UserProfile />
                 </div>
