@@ -48,8 +48,9 @@ function DonationSuccessSection() {
                 <Button
                     target="_blank"
                     link={`https://xray.helius.xyz/token/${nftMintAddress}${
-                        env.NEXT_PUBLIC_SOLANA_NETWORK === "devnet" &&
-                        "?network=devnet"
+                        env.NEXT_PUBLIC_SOLANA_NETWORK === "devnet"
+                            ? "?network=devnet"
+                            : ""
                     }`}
                 >
                     VIEW MY NFT
