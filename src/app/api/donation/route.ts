@@ -27,7 +27,7 @@ import {
     handleApiRouteError,
     successHandler,
 } from "@/src/utils/api";
-import { generateId } from "@/src/utils/general";
+import { generateId, log, sleep } from "@/src/utils/general";
 import { getSolanaConnection } from "@/src/utils/solana";
 import { donationPaymentTransactionSchema } from "@/src/validators/donation";
 
@@ -276,12 +276,24 @@ export async function POST(req: NextRequest) {
 
                 const { nftId } = createNftResponse;
 
-                const getCreatedNftResponse = await getUnderdogCompressedNft(
-                    nftId,
-                    UNDERDOG_NFT_PROJECT_ID
-                );
+                log("createNftResponse", createNftResponse);
 
-                nftMintAddress = getCreatedNftResponse.mintAddress;
+                log("fetching nft details", { nftId, UNDERDOG_NFT_PROJECT_ID });
+
+                await sleep(1000);
+
+                while (!nftMintAddress) {
+                    const getCreatedNftResponse =
+                        // eslint-disable-next-line no-await-in-loop
+                        await getUnderdogCompressedNft(
+                            nftId,
+                            UNDERDOG_NFT_PROJECT_ID
+                        );
+
+                    log("getCreatedNftResponse", getCreatedNftResponse);
+
+                    nftMintAddress = getCreatedNftResponse.mintAddress;
+                }
 
                 await db
                     .update(usersTable)

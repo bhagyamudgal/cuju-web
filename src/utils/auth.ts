@@ -9,7 +9,7 @@ import db from "../db";
 import { usersTable } from "../db/schema/users";
 import env from "../env/index.mjs";
 
-import { generateId, logError } from "./general";
+import { generateId, log, logError } from "./general";
 import { verifySignature } from "./web3auth";
 
 const authPage = "/dashboard";
@@ -93,6 +93,8 @@ const authOptions: NextAuthOptions = {
     callbacks: {
         async session({ session, token }) {
             const walletAddress = token.sub;
+
+            log("auth => walletAddress", walletAddress);
 
             const [userData] = await db
                 .select()
