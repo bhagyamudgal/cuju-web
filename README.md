@@ -4,6 +4,8 @@ Cuju aims to nurture grassroots football & young talent in local communities thr
 
 **Link to App -** https://cujuapp.xyz/
 
+**Our Twitter -** https://twitter.com/cujuofficial
+
 ![Cuju Home Page](https://i.imgur.com/eT5RLSH.jpg)
 
 ## Tech Stack
@@ -19,9 +21,7 @@ https://www.loom.com/share/3206e918615344d9973bb0339d6b27e1 -->
 ## Contributors
 
 -   [Bhagya Mudgal](https://twitter.com/BhagyaMudgal)
--   [Dean The Machine](https://twitter.com/_Dean_Machine)
--   [Ahmed](https://twitter.com/thedaodad)
--   [Muhammad Hadi]()
+-   [Muhammad Hadi](https://twitter.com/PlankRossoneri)
 
 ## Feedback
 

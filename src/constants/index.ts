@@ -7,6 +7,6 @@ export enum UserRoles {
 
 export const DONATION_ADDRESS = "HYn8ToSUQShxWXFvTGihnFjH4cGsJ7ty4xkoAWvSWrwU";
 
-export const ORGANIZATION_ID = "01hbzzmqkwrnr8q937sm4vr9s0";
+export const ORGANIZATION_ID = "01hc03wh3n3tjsthedqj83tn7e";
 
 export const UNDERDOG_NFT_PROJECT_ID = 2;
