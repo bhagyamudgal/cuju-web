@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import DonateButton from "../../common/DonateButton";
 import PageContainer from "../../common/PageContainer";
 import HeroImage from "../HeroImage";
+import dfaLogo from "@/public/images/dfa-logo.png";
 import heroSectionImage1 from "@/public/images/hero-section-1.png";
-import Link from "next/link";
 
 function HeroSection() {
     return (
@@ -42,6 +43,8 @@ function HeroSection() {
                         true”
                     </h2>
                     <h2 className="text-3xl">Neymar Jr</h2>
+
+                    <Image src={dfaLogo} alt="dfa-logo" />
                 </div>
 
                 <HeroImage />
