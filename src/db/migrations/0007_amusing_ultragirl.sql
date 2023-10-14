@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `number` serial AUTO_INCREMENT;
