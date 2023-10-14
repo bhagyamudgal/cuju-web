@@ -259,7 +259,7 @@ export async function POST(req: NextRequest) {
                     {
                         name: `Cuju Donation NFT ${user.number}`,
                         description: `NFT rewarded for donating on Cuju!`,
-                        image: "https://i.imgur.com/ANfFJVP.png",
+                        image: "https://i.imgur.com/jX83Q01.jpg",
                         attributes: {
                             totalDonations: totalDonations.toString(),
                             nftIssueDate,
