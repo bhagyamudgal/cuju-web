@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 import { randomUUID } from "crypto";
 import format from "date-fns/format";
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -250,10 +250,6 @@ export async function POST(req: NextRequest) {
                     { nftId: null }
                 );
 
-                const [{ count }] = await db
-                    .select({ count: sql<string>`count(*)` })
-                    .from(usersTable);
-
                 const totalDonations = amount;
 
                 const nftIssueDate = format(new Date(), "dd MMM yyyy");
@@ -261,9 +257,7 @@ export async function POST(req: NextRequest) {
                 const createNftResponse = await createUnderdogCompressedNft(
                     UNDERDOG_NFT_PROJECT_ID,
                     {
-                        name: `Cuju Donation NFT ${
-                            count === "1" ? count : parseInt(count, 10) + 1
-                        }`,
+                        name: `Cuju Donation NFT ${user.number}`,
                         description: `NFT rewarded for donating on Cuju!`,
                         image: "https://i.imgur.com/ANfFJVP.png",
                         attributes: {
