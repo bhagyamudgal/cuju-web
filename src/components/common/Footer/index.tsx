@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { AiFillGithub } from "react-icons/ai";
 
 import PageContainer from "../PageContainer";
 import twitterIcon from "@/public/icons/twitter.svg";
@@ -21,13 +22,23 @@ function Footer() {
                     <p>&copy; Cuju 2023. All rights reserved.</p>
                 </div>
 
-                <Link
-                    href="https://twitter.com/cujuofficial"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image src={twitterIcon} alt="twitter-icon" />
-                </Link>
+                <div className="flex items-center space-x-4">
+                    <Link
+                        href="https://github.com/bhagyamudgal/cuju-web"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-6xl"
+                    >
+                        <AiFillGithub />
+                    </Link>
+                    <Link
+                        href="https://twitter.com/cujuofficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image src={twitterIcon} alt="twitter-icon" />
+                    </Link>
+                </div>
             </PageContainer>
         </footer>
     );

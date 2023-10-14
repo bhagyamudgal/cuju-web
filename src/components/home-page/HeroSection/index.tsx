@@ -4,6 +4,7 @@ import DonateButton from "../../common/DonateButton";
 import PageContainer from "../../common/PageContainer";
 import HeroImage from "../HeroImage";
 import heroSectionImage1 from "@/public/images/hero-section-1.png";
+import Link from "next/link";
 
 function HeroSection() {
     return (
@@ -15,8 +16,18 @@ function HeroSection() {
                     </h1>
 
                     <p className="text-2xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore eti posa{" "}
+                        Cuju is proud to partner with the Decentralized Football
+                        Academy (DFA) in Lagos, Nigeria to help channelize
+                        funding to their charitable football academy. You may
+                        read more about them{" "}
+                        <Link
+                            className="underline hover:text-primary"
+                            href="https://medium.com/@dfacademy/decentralized-football-academy-dfa-a-nigerian-charitable-football-soccer-academy-8b2c8e4beedb"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            here
+                        </Link>
                     </p>
                     <p className="text-2xl">
                         Donate now and receive a unique NFT from the DFA team as
