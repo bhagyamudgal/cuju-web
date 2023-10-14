@@ -9,7 +9,7 @@ import solanaLogo from "@/public/images/solana-logo.svg";
 function Footer() {
     return (
         <footer>
-            <PageContainer className="flex items-end justify-between">
+            <PageContainer className="flex flex-col items-start justify-between space-y-3 sm:flex-row sm:items-end sm:space-y-0">
                 <div className="space-y-2">
                     <Link
                         href="https://solana.com"
