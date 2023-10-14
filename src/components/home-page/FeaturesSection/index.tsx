@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import PageContainer from "../../common/PageContainer";
 import featureImage1 from "@/public/images/feature-1.svg";
@@ -29,32 +32,39 @@ const FEATURES = [
     },
 ];
 
-export const revalidate = 0;
-export const dynamic = "force-dynamic";
+function FeaturesSection() {
+    const [features, setFeatures] = useState(FEATURES);
 
-async function FeaturesSection() {
-    try {
-        const response = await apiInstance.get("/donations");
+    const getDonationsData = async () => {
+        try {
+            const response = await apiInstance.get("/donations");
 
-        const result = response.data as ApiResponseType;
+            const result = response.data as ApiResponseType;
 
-        if (!result?.success) {
-            throw new Error(result?.message);
+            if (!result?.success) {
+                throw new Error(result?.message);
+            }
+
+            const { totalDonationAmountInUsdc, totalDonationsReceived } =
+                result.result;
+
+            FEATURES[0].value = totalDonationsReceived;
+            FEATURES[2].value = `$${totalDonationAmountInUsdc}`;
+
+            setFeatures([...FEATURES]);
+        } catch (error) {
+            logError("getDonationsData", error);
         }
+    };
 
-        const { totalDonationAmountInUsdc, totalDonationsReceived } =
-            result.result;
-
-        FEATURES[0].value = totalDonationsReceived;
-        FEATURES[2].value = `$${totalDonationAmountInUsdc}`;
-    } catch (error) {
-        logError("FeaturesSection", error);
-    }
+    useEffect(() => {
+        getDonationsData();
+    }, []);
 
     return (
         <section className="py-6">
             <PageContainer className="flex flex-wrap justify-center">
-                {FEATURES.map((feature) => {
+                {features.map((feature) => {
                     return (
                         <div
                             key={feature.name}
