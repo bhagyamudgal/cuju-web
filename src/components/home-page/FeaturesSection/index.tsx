@@ -12,7 +12,7 @@ const FEATURES = [
     {
         id: 1,
         name: "Donations Received",
-        value: "Loading...",
+        value: "...",
         image: featureImage1,
     },
     {
@@ -24,7 +24,7 @@ const FEATURES = [
     {
         id: 3,
         name: "Amount Gathered",
-        value: "Loading...",
+        value: "...",
         image: featureImage3,
     },
 ];
@@ -62,7 +62,7 @@ async function FeaturesSection() {
                             <Image src={feature.image} alt={feature.name} />
                             <div className="space-y-3">
                                 <h4 className="text-xl">{feature.name}</h4>
-                                <p className="text-3xl font-bold sm:text-4xl md:text-6xl">
+                                <p className="text-3xl font-bold sm:text-4xl md:text-5xl">
                                     {feature.value}
                                 </p>
                             </div>
