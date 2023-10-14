@@ -12,6 +12,7 @@ import {
 } from "@/src/constants";
 import db from "@/src/db";
 import { donationsTable } from "@/src/db/schema/donations";
+import { organizationsTable } from "@/src/db/schema/organizations";
 import { usersTable } from "@/src/db/schema/users";
 import type { InsertDonation } from "@/src/db/types";
 import getAuthorizedUser from "@/src/middlewares/getAuthorizedUser";
@@ -216,13 +217,41 @@ export async function POST(req: NextRequest) {
 
                 nftMintAddress = updateNftResponse.mintAddress;
 
-                await db
-                    .update(usersTable)
-                    .set({
-                        nftMintAddress,
-                        totalAmountDonated: newTotalDonations.toNumber(),
-                    })
-                    .where(eq(usersTable.id, user.id));
+                await db.transaction(async (tx) => {
+                    await tx
+                        .update(usersTable)
+                        .set({
+                            nftMintAddress,
+                            totalAmountDonated: newTotalDonations.toNumber(),
+                        })
+                        .where(eq(usersTable.id, user.id));
+
+                    const [{ totalDonationsReceived, totalDonationsAmount }] =
+                        await tx
+                            .select({
+                                totalDonationsReceived:
+                                    organizationsTable.totalDonationsReceived,
+                                totalDonationsAmount:
+                                    organizationsTable.totalDonationsAmount,
+                            })
+                            .from(organizationsTable)
+                            .where(eq(organizationsTable.id, ORGANIZATION_ID));
+
+                    const newTotalDonationsReceived = new BigNumber(
+                        totalDonationsReceived ?? 0
+                    ).plus(1);
+
+                    const newTotalDonationsAmount = new BigNumber(
+                        totalDonationsAmount ?? 0
+                    ).plus(amount);
+
+                    await tx.update(organizationsTable).set({
+                        totalDonationsReceived:
+                            newTotalDonationsReceived.toNumber(),
+                        totalDonationsAmount:
+                            newTotalDonationsAmount.toNumber(),
+                    });
+                });
 
                 logApi(
                     {
