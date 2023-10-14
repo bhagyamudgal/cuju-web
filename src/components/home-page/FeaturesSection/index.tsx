@@ -30,6 +30,7 @@ const FEATURES = [
 ];
 
 export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 async function FeaturesSection() {
     try {
