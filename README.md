@@ -6,7 +6,7 @@ Cuju aims to nurture grassroots football & young talent in local communities thr
 
 **Our Twitter -** https://twitter.com/cujuofficial
 
-![Cuju Home Page](https://i.imgur.com/eT5RLSH.jpg)
+![Cuju Home Page](https://i.imgur.com/CnE4gl7.jpg)
 
 ## Tech Stack
 
