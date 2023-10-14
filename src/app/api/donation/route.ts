@@ -318,14 +318,42 @@ export async function POST(req: NextRequest) {
                     nftMintAddress = getCreatedNftResponse.mintAddress;
                 }
 
-                await db
-                    .update(usersTable)
-                    .set({
-                        nftId,
-                        nftMintAddress,
-                        totalAmountDonated: totalDonations,
-                    })
-                    .where(eq(usersTable.id, user.id));
+                await db.transaction(async (tx) => {
+                    await tx
+                        .update(usersTable)
+                        .set({
+                            nftId,
+                            nftMintAddress,
+                            totalAmountDonated: totalDonations,
+                        })
+                        .where(eq(usersTable.id, user.id));
+
+                    const [{ totalDonationsReceived, totalDonationsAmount }] =
+                        await tx
+                            .select({
+                                totalDonationsReceived:
+                                    organizationsTable.totalDonationsReceived,
+                                totalDonationsAmount:
+                                    organizationsTable.totalDonationsAmount,
+                            })
+                            .from(organizationsTable)
+                            .where(eq(organizationsTable.id, ORGANIZATION_ID));
+
+                    const newTotalDonationsReceived = new BigNumber(
+                        totalDonationsReceived ?? 0
+                    ).plus(1);
+
+                    const newTotalDonationsAmount = new BigNumber(
+                        totalDonationsAmount ?? 0
+                    ).plus(amount);
+
+                    await tx.update(organizationsTable).set({
+                        totalDonationsReceived:
+                            newTotalDonationsReceived.toNumber(),
+                        totalDonationsAmount:
+                            newTotalDonationsAmount.toNumber(),
+                    });
+                });
 
                 logApi(
                     {
